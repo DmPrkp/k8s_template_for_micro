@@ -3,12 +3,12 @@ import { app } from '../../app';
 
 it('return 201 on success', async () => {
     return request(app)
-    .post('/api/users/signup')
-    .send({
-        email: 'test@test.com',
-        password: 'password',
-    })
-    .expect(201);
+        .post('/api/users/signup')
+        .send({
+            email: 'test@test.com',
+            password: 'password',
+        })
+        .expect(201);
 })
 
 it('return 400 on invalid value', async () => {
