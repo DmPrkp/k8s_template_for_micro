@@ -1,10 +1,8 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 
-import { validateRequest } from '../middlewares/vaildate-request'
-import { User } from '../models/user'
-import { DatabaseConnectionError } from "../errors/database-connection-error";
-import { BadRequestError } from "../errors/bad-request-error";
+import { validateRequest, BadRequestError } from '@dp_modules/common';
+import { User } from '../models/user';
 import jwt from "jsonwebtoken";
 
 
