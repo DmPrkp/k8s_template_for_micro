@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-micro-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-micro-mongo
+  template:
+    metadata:
+      labels:
+        app: simple-micro-mongo
+    spec:
+      containers:
+        - name: simple-micro-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-micro-mongo-srv
+spec:
+  selector:
+    app: simple-micro-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

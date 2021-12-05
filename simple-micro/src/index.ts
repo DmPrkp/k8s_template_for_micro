@@ -18,7 +18,7 @@ const start = async () => {
 }
 
 app.listen(3000, () => {
-  const info = 'Auth on port 3000!!!'
+  const info = 'Simple-micro on port 3000!!!'
   console.warn(info);
 });
 

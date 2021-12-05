@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: simple-micro-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: simple-micro
   template:
     metadata:
       labels:
-        app: auth
+        app: simple-micro
     spec:
       containers:
-        - name: auth
-          image: 56715/auth
+        - name: simple-micro
+          image: 56715/simple-micro
           env:
             - name: MONGO_URI
-              value: 'mongodb://auth-mongo-srv:27017/auth'
+              value: 'mongodb://simple-micro-mongo-srv:27017/simple-micro'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: simple-micro-srv
 spec:
   selector:
-    app: auth
+    app: simple-micro
   ports:
-    - name: auth
+    - name: simple-micro
       protocol: TCP
       port: 3000
       targetPort: 3000
